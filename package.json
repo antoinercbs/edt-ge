@@ -1,0 +1,19 @@
+{
+  "name": "bot-ge",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Un bot pour les GE par les TC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "pdf-image": "^2.0.0",
+    "pdf-poppler": "^0.2.1",
+    "pdf2pic": "^2.1.3",
+    "request": "^2.88.2"
+  }
+}
