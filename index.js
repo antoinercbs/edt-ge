@@ -3,6 +3,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
 const Discord = require('discord.js');
+const config = require('./config.json')
 
 
 const prefix = "!";
@@ -12,7 +13,7 @@ import fs from "fs";
 import http from "http";
 
 const client = new Discord.Client();
-client.login("ODA2MjU3MzE4MDU5OTY2NTA1.YBmzpA.or4ouAzLSxy60Y-evPIET61XZk4");
+client.login(config.BOT_TOKEN);
 
 
 const options = {
@@ -20,6 +21,8 @@ const options = {
   saveFilename: "edt",
   savePath: "./images",
   format: "png",
+  height: 800,
+  width: 1200
 
 };
 
@@ -38,7 +41,7 @@ function isNormalInteger(str) {
 
 
 
-client.on("message", function(message) {
+client.on("message", (message) => {
     if (message.author.bot) return;
     if (!message.content.startsWith(prefix)) return;
     const commandBody = message.content.slice(prefix.length);
@@ -66,7 +69,7 @@ client.on("message", function(message) {
         }
         const file = fs.createWriteStream('edt.pdf')
 
-        http.get("http://ge-web.insa-lyon.fr/public/edt/4GE-2Sem.pdf", response => {
+        http.get(config.PDF_URL, response => {
             response.pipe(file)
             file.once('finish', () => {
                 console.log("finished piping file")
